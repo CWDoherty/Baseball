@@ -187,5 +187,29 @@ for a in all_nl_info:
 
 print type(x[0])
 
+# Abbreviation, twitter handle, full name, stadium name, address, league, div
+# all_team_info has name, stadium name and address in that order
+
+def match_handle(team):
+	team_name = team.replace(" ", "")
+	for t in team_twitter_list:
+		handle = t[1:] # removes @
+		if t in team_name:
+			return team
+
+def division(team):
+	if(team == "New York Mets" or team == "Philadelphia Phillies" or team == "Washington Nationals" or
+		team == "Miami Marlins" or team == "New York Yankees" or team == "Toronto Blue Jays" or team == "Baltimore Orioles" or
+		team == "Boston Red Sox" or team == "Tampa Bay Rays" or team == "Atlanta Braves"):
+		return "East"
+	elif(team == "Detroit Tigers" or team == "Kansas City Royals" or team == "Cleveland Indians" or team == "Chicago White Sox" or
+		team == "Minnesota Twins" or team == "St. Louis Cardinals" or team == "Pittsburgh Pirates" or team == "Milwaukee Brewers" or
+		team == "Cincinnati Reds" or team == "Chicago Cubs"):
+		return "Central"
+	else: 
+		return "West"
+
+
+
 
 
