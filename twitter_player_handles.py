@@ -1,6 +1,5 @@
 import tweepy, mysql.connector, time
 
-from pprint import pprint
 
 ## OAUTH stuff
 auth = tweepy.OAuthHandler('DYOf9uKggRwU2ujTgKePQkX1h',
@@ -89,7 +88,7 @@ cursor = cnx.cursor()
 add_accounts = ("INSERT INTO Account"
 			   "(account_type, user_id, full_name, following, followers, join_date) "
 			   "VALUES (%s, %s, %s, %s, %s, %s)")
-
+# Commit data to database
 for f in range(len(fields)):
 	cursor.execute(add_accounts, fields[f])
 	cnx.commit()
