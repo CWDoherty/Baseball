@@ -3,11 +3,13 @@ import requests, bs4, re, mysql.connector, csv, time, tweepy
 url = requests.get('http://www.baseball-reference.com/friv/baseball-player-twitter-accounts.shtml')
 soup = bs4.BeautifulSoup(url.text)
 
+# Find all players and managers along with their corresponding twitter handle.
 p_list = soup.find_all(href=re.compile("/players/|/managers"))
 t_list = soup.find_all(href=re.compile("https://twitter.com/#!/"))
 
 player_user_id_dict = {}
 
+# Match lists. First 2 player and managers found were links
 for p in range(2, len(p_list)):
 	player_user_id_dict[p_list[p].text] = t_list[p-2].text
 
@@ -36,7 +38,7 @@ def convertTeams(x):
 	else:
 		return x
 
-
+# Config to connect to our database
 config = {
 	'user': 'root',
 	'password': 'isles40',
@@ -47,6 +49,7 @@ config = {
 playerList = []
 team_abbrev_list = []
 
+# Get player data from csv file extracted from Lahman's Baseball Database
 with open('baseball2.csv', 'rU') as csvfile:
 	reader = csv.reader(csvfile)
 	for row in reader:
@@ -74,38 +77,42 @@ with open('baseball2.csv', 'rU') as csvfile:
 		playerList.append([full_name, dob, player_user_id,
 						   team_abbrev, pos, height, weight])
 
-
+# connect to DB and insert into it
 cnx = mysql.connector.connect(**config)
 cursor = cnx.cursor()
 
+# SQL query to insert player data into database
 add_players = ("INSERT INTO Player "
 			   "(full_name, dob, player_user_id, team_abbrev, pos, height, weight) "
 			   "VALUES (%s, %s, %s, %s, %s, %s, %s)")
-'''
+
 for p in range(1, len(playerList)):
 	cursor.execute(add_players, playerList[p])
 	cnx.commit()
-'''
+
 cursor.close()
 cnx.close()
 
 
-
+# get team data from mlb website
 teams = requests.get('http://mlb.mlb.com/team/')
 team_soup = bs4.BeautifulSoup(teams.text)
 
+# search for tags that have nl and al
 al_teams = team_soup.find_all("ul", "al team")
 nl_teams = team_soup.find_all("ul", "nl team")
 
 al_splits = []
 nl_splits = []
 
+# split result strings into 6 fields
 for a in al_teams:
 	al_splits.append(a.text.split("\n", 6))
 
 for n in nl_teams:
 	nl_splits.append(n.text.split("\n", 6))
 
+# 6 lists to correlate with the 6 fields
 nl_team_names = []
 nl_stadium_names = []
 nl_stadium_addr = []
@@ -159,7 +166,7 @@ all_al_info = zip(al_team_names, al_stadium_names, al_stadium_addr)
 all_nl_info = zip(nl_team_names, nl_stadium_names, nl_stadium_addr)
 all_team_info = all_nl_info + all_al_info
 
-
+# Twitter handles for each team provided by Twitter.
 team_twitter_list = ['@Rockies', '@whitesox', '@Phillies', '@Marlins', '@Indians',
 					 '@Cardinals', '@Brewers', '@astros', '@SFGiants', '@Mariners',
 					 '@BlueJays', '@Cubs', '@Rangers', '@Yankees', '@RedSox', 
@@ -167,37 +174,15 @@ team_twitter_list = ['@Rockies', '@whitesox', '@Phillies', '@Marlins', '@Indians
 					 '@Mets', '@Pirates', '@Padres', '@Reds', '@DBacks', '@tigers',
 					 '@Royals', '@Dodgers', '@Braves', '@Athletics']
 
-nicknames = []
 
-for t in all_team_names:
-	split = t.split()
-	if split[0] == 'Boston' or split[1] == 'White' or split[0] == 'Toronto':
-		name = split[1] + " " + split[2]
-		nicknames.append(name)
-	else:
-		nicknames.append(split[len(split) - 1])
-
-
-
-nicknames = sorted(nicknames)
-team = sorted(teams)
-x = []
-
-for a in all_nl_info:
-	 x.append(list(a)) 
-
-print type(x[0])
-
-# Abbreviation, twitter handle, full name, stadium name, address, league, div
-# all_team_info has name, stadium name and address in that order
-
+# function to match each team with their twitter handle. Some cases are hard coded below
 def match_handle(team):
 	team_name = team.replace(" ", "").lower()
 	for t in team_twitter_list:
 		handle = t[1:].lower() # removes @
 		if handle in team_name:
 			return t[1:]
-
+# A function to match a team to their division
 def division(team):
 	if(team == "New York Mets" or team == "Philadelphia Phillies" or team == "Washington Nationals" or
 		team == "Miami Marlins" or team == "New York Yankees" or team == "Toronto Blue Jays" or team == "Baltimore Orioles" or
@@ -221,7 +206,7 @@ names_and_abbrevs_list = {n[0]: ' '.join(n[1:]) if n[1:] else 0 for n in names_a
 al_commit = []
 nl_commit = []
 
-
+# Create a list of lists, with each inner list containing all info we need on each team
 for n in range(15):
 	name = all_nl_info[n][0]
 	stadium = all_nl_info[n][1]
@@ -238,7 +223,7 @@ for n in range(15):
 nl_commit[0][1] = "DBacks"
 nl_commit[12][1] = "SFGiants"
 
-
+# Same as above for AL teams
 for a in range(15):
 	name = all_al_info[a][0]
 	stadium = all_al_info[a][1]
@@ -253,13 +238,13 @@ for a in range(15):
 
 al_commit[12][1] = "RaysBaseball"
 
-
+# SQL Query to insert data into database
 add_teams = ("INSERT INTO Team "
 			"(abbreviation, team_user_id, team_name, stadium_name, stadium_address, team_league, team_div)"
 			"VALUES (%s, %s, %s, %s, %s, %s, %s)")
 
 
-
+# Commit data to database.
 cnx = mysql.connector.connect(**config)
 cursor = cnx.cursor()
 
