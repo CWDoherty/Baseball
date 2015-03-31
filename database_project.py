@@ -157,6 +157,7 @@ for n in names_and_abbrevs_list:
 
 all_al_info = zip(al_team_names, al_stadium_names, al_stadium_addr)
 all_nl_info = zip(nl_team_names, nl_stadium_names, nl_stadium_addr)
+all_team_info = all_nl_info + all_al_info
 
 
 team_twitter_list = ['@Rockies', '@whitesox', '@Phillies', '@Marlins', '@Indians',
@@ -183,7 +184,7 @@ team = sorted(teams)
 x = []
 
 for a in all_nl_info:
-	 x.append(list(a))
+	 x.append(list(a)) 
 
 print type(x[0])
 
@@ -191,11 +192,11 @@ print type(x[0])
 # all_team_info has name, stadium name and address in that order
 
 def match_handle(team):
-	team_name = team.replace(" ", "")
+	team_name = team.replace(" ", "").lower()
 	for t in team_twitter_list:
-		handle = t[1:] # removes @
-		if t in team_name:
-			return team
+		handle = t[1:].lower() # removes @
+		if handle in team_name:
+			return t[1:]
 
 def division(team):
 	if(team == "New York Mets" or team == "Philadelphia Phillies" or team == "Washington Nationals" or
@@ -210,6 +211,67 @@ def division(team):
 		return "West"
 
 
+# Convert tuples to a list
+all_al_info = [list(a) for a in all_al_info]
+all_nl_info = [list(n) for n in all_nl_info]
+
+# Convert list of names and abbreviations to a dictionary for easier lookup
+names_and_abbrevs_list = {n[0]: ' '.join(n[1:]) if n[1:] else 0 for n in names_and_abbrevs_list}
+
+al_commit = []
+nl_commit = []
 
 
+for n in range(15):
+	name = all_nl_info[n][0]
+	stadium = all_nl_info[n][1]
+	address = all_nl_info[n][2]
+	handle = match_handle(name)
+	div = division(name)
+	abbrev = names_and_abbrevs_list[name]
+	league = "National League"
+
+	list_nl = [abbrev, handle, name, stadium, address, league, div]
+	nl_commit.append(list_nl)
+
+# Fixes case that the above doesn't catch
+nl_commit[0][1] = "DBacks"
+nl_commit[12][1] = "SFGiants"
+
+
+for a in range(15):
+	name = all_al_info[a][0]
+	stadium = all_al_info[a][1]
+	address = all_al_info[a][2]
+	handle = match_handle(name)
+	div = division(name)
+	abbrev = names_and_abbrevs_list[name]
+	league = "American League"
+
+	list_al = [abbrev, handle, name, stadium, address, league, div]
+	al_commit.append(list_al)
+
+al_commit[12][1] = "RaysBaseball"
+
+
+add_teams = ("INSERT INTO Team "
+			"(abbreviation, team_user_id, team_name, stadium_name, stadium_address, team_league, team_div)"
+			"VALUES (%s, %s, %s, %s, %s, %s, %s)")
+
+
+
+cnx = mysql.connector.connect(**config)
+cursor = cnx.cursor()
+
+
+for a in al_commit:
+	cursor.execute(add_teams, a)
+	cnx.commit()
+
+for n in nl_commit:
+	cursor.execute(add_teams, n)
+	cnx.commit()
+
+cursor.close()
+cnx.close()
 
