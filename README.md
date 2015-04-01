@@ -8,7 +8,7 @@ Here is the code and other resources for our Baseball Database project
   >The main script for the project. Gets player names and twitter handles from baseball-reference then interacts with baseball2.csv to match up with only current players(players who have played within the last year). The player info is then inserted into the database. Team information is then grabbed from mlb.com and parsed and inserted into the database.
   
 ###baseball2.csv
-  >A CSV file with information extracted from Lahman's Baseball Database. http://www.seanlahman.com/baseball-archive/statistics/
+  >A CSV file with information extracted from Lahman's Baseball Database. [Source.](http://www.seanlahman.com/baseball-archive/statistics/)
   
 ###player_handles.csv
   >A CSV file with all players matched to their twitter handles provided they have a twitter handle.
