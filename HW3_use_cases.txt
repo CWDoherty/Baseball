@@ -1,0 +1,12 @@
+Oliver Nabavian Use Cases
+
+Case #1: See Which Players have the most followers
+Case #2: Get a Player's Handle with their 2014 Hits
+Case #3: Yankee Player GP by most to least
+Case #4: Get Player x weight and homeruns
+Case #5: Join a player's twitter handle with their homeruns and RBI's
+Case #6: Get the name and age of all the players hitting over x average
+Case #7: Get the name and homeruns of all players at x position
+Case #8: How Many Players are on Twitter in the American vs. National Leagues
+Case #9: Join Pitchers with wins and their handle and how many follower they have 
+Case #10: Sort pitchers by the most AB's
