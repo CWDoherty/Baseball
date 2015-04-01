@@ -18,3 +18,9 @@ Here is the code and other resources for our Baseball Database project
   
 ###baseballdb.sql
   >The database that hold our twitter, baseball player and baseball team data. So far only the Player and Team tables have been filled and the account table is incomplete.
+
+###lahman.sql
+  >Lahman's baseball database which is a source of most of our player data.
+
+###player_stats.py
+  >A script that query's Lahman's database to pull player stats from the database. Will be updated to manipulate data and insert into our database, baseballdb.sql.
