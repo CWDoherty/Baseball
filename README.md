@@ -24,3 +24,17 @@ Here is the code and other resources for our Baseball Database project
 
 ###player_stats.py
   >A script that query's Lahman's database to pull player stats from the database. Will be updated to manipulate data and insert into our database, baseballdb.sql.
+
+# Sample Data
+
+###Account.csv
+  >Sample data related to Twitter Accounts.
+
+###Batting.csv
+  >Sample data with baseball player batting statistics.
+  
+###Pitching.csv
+  >Sample data with baseball player pitching statistics.
+
+###Players.csv
+  >Sample data with player information.
