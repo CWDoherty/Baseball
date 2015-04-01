@@ -40,3 +40,6 @@ Here is the code and other resources for our Baseball Database project
 
 ####Players.csv
   >Sample data with player information.
+
+####Teams.csv
+  >Sample data with team information.
