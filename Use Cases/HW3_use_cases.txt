@@ -1,9 +1,9 @@
-Oliver Nabavian Use Cases
+Use Cases
 
 Case #1: See Which Players have the most followers
 Case #2: Get a Player's Handle with their 2014 Hits
-Case #3: Yankee Player GP by most to least
-Case #4: Get Player x weight and homeruns
+Case #3: Mets Player GP by most to least
+Case #4: List Starting Pitchers with lowest ERA (>10 Games Started)
 Case #5: Join a player's twitter handle with their homeruns and RBI's
 Case #6: Get the name and age of all the players hitting over x average
 Case #7: Get the name and homeruns of all players at x position
