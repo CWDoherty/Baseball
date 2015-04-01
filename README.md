@@ -43,3 +43,8 @@ Here is the code and other resources for our Baseball Database project
 
 ####Teams.csv
   >Sample data with team information.
+  
+##Auditing
+
+####auditing.txt
+  >A text file outlining the auditing of our data.
