@@ -48,3 +48,8 @@ Here is the code and other resources for our Baseball Database project
 
 ####auditing.txt
   >A text file outlining the auditing of our data.
+  
+##Sources
+
+###sources.md
+  >File with sources of data and short explanations.
