@@ -1,0 +1,14 @@
+Validity/Accuracy
+
+We believe our data to be almost completely accurate as our player data is sourced from baseball-reference. baseball-reference is probably the authority when it comes to historical baseball statistics and is also fairly accurate for in season statistics, though we will not be analyzing that. 
+
+The only cause for concern would be the baseball player twitter handles, as many players change their handles when they get traded or change their number and even more are not verified accounts.
+
+
+Completeness
+
+Following the above assumptions our data should be nearly complete, at least in the Player Statistics and Team information tables. We have very limited data on twitter accounts, and those we do have are only for players that we were able to get a twitter handle for. 
+
+Consistency/Uniformity
+
+Our data is extremely uniform and consistent as most of it was sourced from a very clean and uniform database. The only data we have that is not consistent is the names that some players choose as their display name on twitter, as it can be anything you want and some foreign players use not English characters. This is not a problem as we can just map player name from the Player table to match with their twitter handle.
