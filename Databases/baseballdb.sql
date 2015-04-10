@@ -2505,6 +2505,141 @@ SET character_set_client = utf8;
 SET character_set_client = @saved_cs_client;
 
 --
+-- Temporary view structure for view `nabavian_case1`
+--
+
+DROP TABLE IF EXISTS `nabavian_case1`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case1`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case1` AS SELECT 
+ 1 AS `Team_Abbrev`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `nabavian_case10`
+--
+
+DROP TABLE IF EXISTS `nabavian_case10`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case10`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case10` AS SELECT 
+ 1 AS `Full_Name`,
+ 1 AS `Weight`,
+ 1 AS `Hr`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `nabavian_case2`
+--
+
+DROP TABLE IF EXISTS `nabavian_case2`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case2`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case2` AS SELECT 
+ 1 AS `weight`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `nabavian_case3`
+--
+
+DROP TABLE IF EXISTS `nabavian_case3`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case3`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case3` AS SELECT 
+ 1 AS `MAX(t.tweet_id)`,
+ 1 AS `message`,
+ 1 AS `TIMESTAMP`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `nabavian_case4`
+--
+
+DROP TABLE IF EXISTS `nabavian_case4`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case4`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case4` AS SELECT 
+ 1 AS `full_name`,
+ 1 AS `dob`,
+ 1 AS `player_user_id`,
+ 1 AS `pos`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `nabavian_case5`
+--
+
+DROP TABLE IF EXISTS `nabavian_case5`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case5`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case5` AS SELECT 
+ 1 AS `MAX(p.team_abbrev)`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `nabavian_case6`
+--
+
+DROP TABLE IF EXISTS `nabavian_case6`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case6`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case6` AS SELECT 
+ 1 AS `Full_Name`,
+ 1 AS `Age`,
+ 1 AS `Avg`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `nabavian_case7`
+--
+
+DROP TABLE IF EXISTS `nabavian_case7`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case7`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case7` AS SELECT 
+ 1 AS `Full_Name`,
+ 1 AS `Pos`,
+ 1 AS `Hr`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `nabavian_case8`
+--
+
+DROP TABLE IF EXISTS `nabavian_case8`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case8`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case8` AS SELECT 
+ 1 AS `Full_Name`,
+ 1 AS `Player_User_Id`,
+ 1 AS `Team_League`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `nabavian_case9`
+--
+
+DROP TABLE IF EXISTS `nabavian_case9`;
+/*!50001 DROP VIEW IF EXISTS `nabavian_case9`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `nabavian_case9` AS SELECT 
+ 1 AS `Full_Name`,
+ 1 AS `Player_User_Id`,
+ 1 AS `W`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `pitching`
 --
 
@@ -4872,6 +5007,186 @@ UNLOCK TABLES;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case1`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case1`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case1` AS select `player`.`team_abbrev` AS `Team_Abbrev` from `player` where (`player`.`full_name` = 'Jacoby Ellsbury') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case10`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case10`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case10` AS select `player`.`full_name` AS `Full_Name`,`player`.`weight` AS `Weight`,`batting`.`HR` AS `Hr` from (`player` left join `batting` on((`player`.`full_name` = `batting`.`full_name`))) order by `player`.`weight` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case2`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case2`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case2` AS select `p`.`weight` AS `weight` from `player` `p` where (`p`.`full_name` = 'Jacoby Ellsbury') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case3`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case3`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case3` AS select max(`t`.`tweet_id`) AS `MAX(t.tweet_id)`,`t`.`message` AS `message`,`t`.`timestamp` AS `TIMESTAMP` from `tweet` `t` where (`t`.`user_id` = (select `p`.`player_user_id` from `player` `p` where (`p`.`full_name` = 'Jacoby Ellsbury'))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case4`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case4`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case4` AS select `p`.`full_name` AS `full_name`,`p`.`dob` AS `dob`,`p`.`player_user_id` AS `player_user_id`,`p`.`pos` AS `pos` from `player` `p` where (`p`.`team_abbrev` = 'NYY') */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case5`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case5`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case5` AS select max(`p`.`team_abbrev`) AS `MAX(p.team_abbrev)` from `player` `p` where (`p`.`player_user_id` is not null) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case6`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case6`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case6` AS select `player`.`full_name` AS `Full_Name`,timestampdiff(YEAR,`player`.`dob`,curdate()) AS `Age`,(`batting`.`H` / `batting`.`AB`) AS `Avg` from (`player` join `batting` on((`batting`.`full_name` = `player`.`full_name`))) where (((`batting`.`H` / `batting`.`AB`) >= 0.3) and (`batting`.`AB` >= 100)) order by `Avg` desc limit 20 */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case7`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case7`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case7` AS select `player`.`full_name` AS `Full_Name`,`player`.`pos` AS `Pos`,`batting`.`HR` AS `Hr` from (`player` join `batting` on((`batting`.`full_name` = `player`.`full_name`))) where (`player`.`pos` = '2b') order by `batting`.`HR` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case8`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case8`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case8` AS select `player`.`full_name` AS `Full_Name`,`player`.`player_user_id` AS `Player_User_Id`,`team`.`team_league` AS `Team_League` from (`player` join `team` on((`player`.`team_abbrev` = `team`.`abbreviation`))) where ((`player`.`player_user_id` is not null) and (`player`.`player_user_id` <> 'Null')) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `nabavian_case9`
+--
+
+/*!50001 DROP VIEW IF EXISTS `nabavian_case9`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `nabavian_case9` AS select `player`.`full_name` AS `Full_Name`,`player`.`player_user_id` AS `Player_User_Id`,`pitching`.`W` AS `W` from ((`player` left join `pitching` on((`player`.`full_name` = `pitching`.`full_name`))) left join `account` on((`player`.`player_user_id` = `account`.`user_id`))) where ((`pitching`.`W` > 4) and (`player`.`player_user_id` <> 'Null')) order by `pitching`.`W` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -4882,4 +5197,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-08 17:23:15
+-- Dump completed on 2015-04-09 20:56:39
