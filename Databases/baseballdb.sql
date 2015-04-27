@@ -29,6 +29,24 @@ CREATE TABLE `Hashtag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+DROP TABLE IF EXISTS `Youtube`;
+CREATE TABLE `Youtube` (
+  `kind` varchar(50),
+  `etag` varchar(50),  
+  `id` varchar(50),
+  `publishedAt` datetime,
+  `channelID` varchar(50),
+  `title` varchar(150),
+  `description` varchar(1000),
+  `url` varchar(100),
+  `categoryID` int(11),
+  `viewCount` int(11),
+  `likeCount` int(11),
+  `duration` varchar(10),
+  PRIMARY KEY ('id')
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Dumping data for table `Hashtag`
 --
@@ -57,7 +75,9 @@ CREATE TABLE `Tweet` (
   `has_links` tinyint(1) NOT NULL,
   `has_hashtags` tinyint(1) NOT NULL,
   `is_retweet` tinyint(1) NOT NULL,
+  'videoID' varchar(50)
   PRIMARY KEY (`tweet_id`)
+  FOREIGN KEY ('videoID')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

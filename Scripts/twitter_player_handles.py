@@ -62,7 +62,7 @@ for u in user_list:
 		following = i.friends_count
 		followers = i.followers_count
 		join_date = i.created_at
-
+		print type(join_date)
 		# create a list of lists, with each list being one players info
 		x = [player_user_id, full_name, following, followers, join_date]
 
@@ -86,8 +86,8 @@ cursor = cnx.cursor()
 
 # SQL Query to enter info into table.
 add_accounts = ("INSERT INTO Account"
-			   "(account_type, user_id, full_name, following, followers, join_date) "
-			   "VALUES (%s, %s, %s, %s, %s, %s)")
+			   "(user_id, full_name, following, followers, join_date) "
+			   "VALUES (%s, %s, %s, %s, %s)")
 # Commit data to database
 for f in range(len(fields)):
 	cursor.execute(add_accounts, fields[f])
