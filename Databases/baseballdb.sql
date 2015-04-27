@@ -40,11 +40,41 @@ CREATE TABLE `Youtube` (
   `title` varchar(150),
   `description` varchar(1000),
   `url` varchar(100),
-  `categoryID` int(11),
+  `categoryID` varchar(100),
   `viewCount` int(11),
   `likeCount` int(11),
   `duration` varchar(10),
   PRIMARY KEY ('id')
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `Tags`;
+CREATE TABLE `TAGS` (
+  `tag_id` varchar(100),
+  `cate_id` varchar(100),
+  `name` varchar(100)
+  PRIMARY KEY ('tag_id')
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `Tag_Category`;
+CREATE TABLE `Tag_Category` (
+  `cat_id` varchar(100),
+  `name` varchar(100),
+  PRIMARY KEY ('cat_id');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `Synonyms`;
+CREATE TABLE `Synonyms` (
+  `tag_id` varchar(100),
+  `syn_id` varchar(100),
+  PRIMARY KEY (`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `Misspellings`;
+CREATE TABLE `Misspellings` (
+  `tag_id` varchar(100),
+  `misspelling_id` varchar(100),
+  PRIMARY KEY (`tag_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
