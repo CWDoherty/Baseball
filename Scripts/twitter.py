@@ -1,4 +1,6 @@
-import tweepy, mysql.connector,time
+# -*- coding: utf-8 -*-
+
+import tweepy, mysql.connector, time, re
 from datetime import datetime
 
 
@@ -30,6 +32,13 @@ cursor.execute(getPlayerIDs);
 def has_hashtags(x):
 	return "#" in x
 
+def hasLinks(x):
+	if('http' in x or '.com' in x or '.ly' in x or '.net' in x or '.org' in x or '.al' in x):
+		return '1'
+	else:
+		return '0'
+
+
 def monthNo(x):
 	if(x == 'Jan'):
 		return '01'
@@ -57,8 +66,7 @@ def monthNo(x):
 		return '12'
 
 
-t = None
-z = None
+
 fields = []
 for c in cursor:
 	print c
@@ -68,6 +76,16 @@ for c in cursor:
 		timeline = api.user_timeline(s)
 		for t in timeline:
 			message = t._json['text'].encode('utf8')
+
+			try:
+				myre = re.compile(u'[\U00010000-\U0010ffff]')
+			except re.error:
+				myre = re.compile(u'[\uD800-\uDBFF][\uDC00-\uDFFF]')
+			myre2 = re.compile(r'[^\x00-\x7F]+')
+			message = myre.sub('', message)
+			message = myre2.sub('', message)
+			if(len(message) > 140):
+				message = message[:139]
 			hastags = str(has_hashtags(message))
 			if not hastags:
 				hastags = '0'
@@ -83,24 +101,31 @@ for c in cursor:
 			timeod = timestamp[11:19]
 			timestamp = str(year) + '-' + str(month) + '-' + str(day) + ' ' + str(timeod)
 			timestamp = datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S')
-			print timestamp, type(timestamp)
 			retweets = str(t._json['retweet_count'])
 			is_retweet = str(t._json['retweeted'])
 			if is_retweet:
 				is_retweet = '1'
 			else:
 				is_retweet = '0'
-			query_list = [message, "@" + s, tweet_id, favorites, retweets, is_retweet, hastags, timestamp]
+			has_links = hasLinks(message)
+			query_list = [message, "@" + s, tweet_id, favorites, retweets, is_retweet, hastags, timestamp, has_links]
 			print query_list
 			fields.append(query_list)
 	except tweepy.error.TweepError:
 		print s,  "Does not exist"
-	time.sleep(5)  
+	time.sleep(5)
+	print(chr(27) + "[2J")  
+	
 
 
 insert = ("INSERT INTO Tweet"
-   "(message, user_id, tweet_id, favorites, retweets, is_retweet, has_hashtags, time_tweeted)"
-   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
+   "(message, user_id, tweet_id, favorites, retweets, is_retweet, has_hashtags, time_tweeted, has_links)"
+   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)")
+
+cursor.execute('SET NAMES utf8mb4')
+cursor.execute("SET CHARACTER SET utf8mb4")
+cursor.execute("SET character_set_connection=utf8mb4")
+cnx.commit()
 
 for f in range(len(fields)):
 	cursor.execute(insert, fields[f])
