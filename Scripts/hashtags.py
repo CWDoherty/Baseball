@@ -10,10 +10,6 @@ config = {
 cnx = mysql.connector.connect(**config)
 cursor = cnx.cursor(buffered=True)
 
-def user_mentions(message):
-	return "@" in message
-
-
 tweets = ("SELECT message, user_id, tweet_id FROM Tweet")
 
 cursor.execute(tweets)
@@ -51,6 +47,7 @@ for x in range(len(query)):
 		cnx.commit()
 	except:
 		print "duplicate"
+
 cursor.close()
 cnx.close()
 
