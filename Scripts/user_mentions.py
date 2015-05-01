@@ -65,6 +65,7 @@ for x in range(len(query)):
 		cursor.execute(insert, query[x])
 		cnx.commit()
 	except:
+		# duplicates will not make it into the database
 		continue
 
 cursor.close()

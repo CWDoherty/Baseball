@@ -279,3 +279,8 @@ for n in nl_commit:
 cursor.close()
 cnx.close()
 
+
+
+
+
+

@@ -65,7 +65,8 @@ for x in range(len(query)):
 		cursor.execute(insert, query[x])
 		cnx.commit()
 	except:
-		print "duplicate"
+		# Duplicate entries will not make it into the database
+		continue
 
 cursor.close()
 cnx.close()
