@@ -1,0 +1,6 @@
+The script to update the information in the database will be update.py.
+
+This script calls three scripts: twitter.py, hashtags.py and user_mentions.py
+In each of the above scripts, the 'config' variable will have to be changed to point to the correct database wherever this ends up.
+
+If any table names are changed then the SQL statements within those 3 scripts will have to be changed as well to insert and select from the appropriate tables.
